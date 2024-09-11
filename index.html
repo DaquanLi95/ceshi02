@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生信息记录</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #studentList {
+            margin-top: 20px;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+        .studentItem {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>学生信息记录</h1>
+
+    <form id="studentForm">
+        <label for="name">姓名:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="id">学号:</label>
+        <input type="text" id="id" name="id" required>
+
+        <label for="email">电子邮件:</label>
+        <input type="email" id="email" name="email" required>
+
+        <button type="submit">保存信息</button>
+    </form>
+
+    <div id="studentList"></div>
+
+    <script>
+        document.getElementById('studentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const id = document.getElementById('id').value;
+            const email = document.getElementById('email').value;
+
+            const studentItem = document.createElement('div');
+            studentItem.classList.add('studentItem');
+            studentItem.innerHTML = `<p><strong>姓名:</strong> ${name}</p>
+                                     <p><strong>学号:</strong> ${id}</p>
+                                     <p><strong>电子邮件:</strong> ${email}</p>`;
+
+            document.getElementById('studentList').appendChild(studentItem);
+
+            // 清空表单
+            document.getElementById('studentForm').reset();
+        });
+    </script>
+
+</body>
+</html>
